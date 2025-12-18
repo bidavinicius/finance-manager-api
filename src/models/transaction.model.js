@@ -7,7 +7,6 @@ const TransactionSchema = new mongoose.Schema({
     categoria: { type: String, required: true, enum :['Fixos', 'Carro', 'Mercado', 'Lazer', 'Comida', 'Presentes', 'Outros']},
     data: { type: Date, default: Date.now },
     
-    // RELACIONAMENTO: Aqui dizemos que essa transação pertence a um Usuário específico
     user: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User', 

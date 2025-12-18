@@ -11,22 +11,17 @@ export class AuthService {
             throw new Error("Usuário ou senha inválidos");
         }
 
-        // Verifica a senha
         const senhaBate = await PasswordUtils.comparePassword(senha, user.senha);
         
         if (!senhaBate) {
             throw new Error("Usuário ou senha inválidos");
         }
 
-        // Gera o token
         const secret = process.env.JWT_SECRET;
         const token = jwt.sign({ id: user._id }, secret, { expiresIn: '1d' });
 
-        // --- LIMPEZA DE DADOS ---
-        // Transforma o documento do Mongoose em objeto JS puro
         const userResponse = user.toObject(); 
         
-        // Remove campos sensíveis
         delete userResponse.senha;
         delete userResponse.__v; 
 
@@ -47,7 +42,6 @@ export class AuthService {
             senha: senhaHash
         });
 
-        // --- LIMPEZA DE DADOS ---
         const userResponse = novoUsuario.toObject();
         delete userResponse.senha;
         delete userResponse.__v;
