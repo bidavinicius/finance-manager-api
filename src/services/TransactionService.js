@@ -9,11 +9,12 @@ export class TransactionService {
     }
 
     // Cria transação vinculada ao ID do usuário
-    async executeCreate(titulo, valor, tipo, userId) {
+    async executeCreate(titulo, valor, tipo, categoria, userId) {
         const novaTransacao = await Transaction.create({
             titulo,
             valor,
             tipo,
+            categoria,
             user: userId // Salva o ID do dono
         });
 
