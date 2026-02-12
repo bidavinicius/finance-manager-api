@@ -11,6 +11,8 @@
 
 ## Sobre o Projeto
 
+- Este projeto foi desenvolvido como trabalho final do curso "Do zero ao herói do código". A trilha de aprendizado e exercícios fundamentais que levaram a este projeto estão registrados neste link https://github.com/bidavinicius/js-course-lab
+
 Como alguém que queria gerir melhor o próprio dinheiro, pensei nessa solução quando nos foi apresentado esse projeto final da Lions. Sendo assim, o **Gerenciador Financeiro** é um aplicativo de gestão financeira desenvolvido para ajudar usuários a organizarem sua vida econômica. O objetivo principal deste projeto foi integrar uma interface ágil e moderna (criada com **FlutterFlow**) a uma API robusta e escalável (**Node.js**) com armazenamento flexível de dados (**MongoDB**). 
 
 ### Principais Funcionalidades
