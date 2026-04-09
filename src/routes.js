@@ -1,14 +1,17 @@
 import { Router } from 'express';
-import { UniversalController } from './controllers/UniversalController.js';
-import { authMiddleware } from './middlewares/authMiddleware.js';
+import { TransactionController } from './controllers/TransactionController.js';
+import { AuthController } from './controllers/AuthController.js'; // Importe o Auth
+import { authMiddleware } from './middlewares/authMiddleware.js'; // Importe o Guardião
 
 const router = Router();
-const universalController = new UniversalController();
+const transactionController = new TransactionController();
+const authController = new AuthController();
 
-router.post('/auth', (req, res) => universalController.handleAuth(req, res));
+router.post('/login', (req, res) => authController.handleLogin(req, res));
+router.post('/register', (req, res) => authController.handleRegister(req, res));
 
-// --- ROTA 2: DADOS (Privada) ---
-// Serve para Listar, Ver Resumo e Criar Nova Transação
-router.post('/dados', authMiddleware, (req, res) => universalController.handleData(req, res));
+router.get('/transacoes', authMiddleware, (req, res) => transactionController.handleList(req, res));
+router.post('/transacoes', authMiddleware, (req, res) => transactionController.handleCreate(req, res));
+router.get('/resumo', authMiddleware, (req, res) => transactionController.handleSummary(req, res));
 
 export default router;
